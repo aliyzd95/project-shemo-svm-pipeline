@@ -1,0 +1,8 @@
+preprocess:
+  input: data/modified_shemo.json
+  output: data/data.csv
+
+train:
+  data: data/data.csv
+  model: models/
+  random_state: 42

@@ -1,0 +1,44 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/create_csv.py
+    deps:
+    - path: data/modified_shemo.json
+      hash: md5
+      md5: 509e82f26cb25ef7da467cd1d4e9a6a4
+      size: 1873499
+    - path: src/create_csv.py
+      hash: md5
+      md5: ed9d21b1a4bb8f5c2b9133fe7444d777
+      size: 855
+    params:
+      params.yaml:
+        preprocess.input: data/modified_shemo.json
+        preprocess.output: data/data.csv
+    outs:
+    - path: data/data.csv
+      hash: md5
+      md5: 02437e4b070c6d06d91892ddedfbd942
+      size: 79038
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/data.csv
+      hash: md5
+      md5: 02437e4b070c6d06d91892ddedfbd942
+      size: 79038
+    - path: src/train.py
+      hash: md5
+      md5: dca6521f419af2401cd28f6d5f804ded
+      size: 4462
+    params:
+      params.yaml:
+        train.data: data/data.csv
+        train.model: models/
+        train.random_state: 42
+    outs:
+    - path: models
+      hash: md5
+      md5: 7de6979c8199d45a04b93fbf47fa21f8.dir
+      size: 11622590
+      nfiles: 5
