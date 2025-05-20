@@ -1,0 +1,5 @@
+outs:
+- md5: 509e82f26cb25ef7da467cd1d4e9a6a4
+  size: 1873499
+  hash: md5
+  path: modified_shemo.json
